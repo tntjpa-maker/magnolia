@@ -42,7 +42,7 @@ const clinicEntity = {
 };
 
 const physicianEntity = {
-  '@type': 'Physician',
+  '@type': ['Person', 'Physician'],
   '@id': physicianId,
   name: 'Dra. Thalita do Amaral Menezes Teixeira',
   alternateName: 'Dra. Thalita Amaral',
