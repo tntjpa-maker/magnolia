@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 const root = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
+const assetVersion = '20260803-2';
 const whatsapp = 'https://wa.me/5521990368159?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Thalita.';
 const doctoralia = 'https://www.doctoralia.com.br/thalita-menezes-2/ginecologista/niteroi';
 const instagram = 'https://www.instagram.com/magnoliaporthalita';
@@ -119,14 +120,14 @@ function layout({ title, description, path = '/', body, schema = '' }) {
   <meta name="theme-color" content="#18382d">
   <link rel="canonical" href="${canonical}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/site.css?v=${assetVersion}">
   ${schema}
 </head>
 <body>
 ${header()}
 <main>${body}</main>
 ${footer()}
-<script src="/assets/site.js" defer></script>
+<script src="/assets/site.js?v=${assetVersion}" defer></script>
 </body>
 </html>`;
 }
