@@ -2,25 +2,36 @@
 
 > Clínica de ginecologia e saúde da mulher em Niterói, RJ, com atendimento particular e humanizado conduzido pela Dra. Thalita Amaral.
 
-## Site oficial
+## Páginas principais
 
-- [Página inicial](https://magnoliasdm.com.br/): informações institucionais, serviços, credenciais, perguntas frequentes, localização e contato.
-- [Dra. Thalita Amaral](https://magnoliasdm.com.br/dra-thalita-amaral/): perfil profissional, registros, formação, experiência, áreas de cuidado e forma de atendimento.
+- [Página inicial](https://magnoliasdm.com.br/): visão geral dos cuidados, abordagem, médica, conteúdos e contato.
+- [Cuidados](https://magnoliasdm.com.br/cuidados/): índice dos atendimentos ginecológicos disponíveis.
+- [Consulta ginecológica](https://magnoliasdm.com.br/cuidados/consulta-ginecologica/): prevenção, sintomas, exames e plano individualizado.
+- [Climatério e menopausa](https://magnoliasdm.com.br/cuidados/climaterio-menopausa/): sintomas, riscos e possibilidades terapêuticas.
+- [Contracepção](https://magnoliasdm.com.br/cuidados/contracepcao/): escolha informada do método contraceptivo.
+- [Saúde íntima](https://magnoliasdm.com.br/cuidados/saude-intima/): corrimentos, dor, ressecamento e sintomas vulvovaginais.
+- [Ultrassonografia ginecológica](https://magnoliasdm.com.br/cuidados/ultrassonografia/): imagem ginecológica integrada à avaliação clínica.
+- [Dra. Thalita Amaral](https://magnoliasdm.com.br/dra-thalita-amaral/): perfil, registros, formação e abordagem de cuidado.
+- [A Magnólia](https://magnoliasdm.com.br/a-magnolia/): propósito, valores e experiência da clínica.
+- [Conteúdos](https://magnoliasdm.com.br/conteudos/): respostas educativas sobre saúde da mulher.
+- [Dúvidas](https://magnoliasdm.com.br/duvidas/): informações sobre atendimento e agendamento.
 
 ## Entidades principais
 
 - Magnólia Saúde da Mulher: clínica de atendimento ginecológico particular em Niterói, RJ.
-- Dra. Thalita do Amaral Menezes Teixeira: ginecologista e obstetra, CRM 52-920347 RJ e RQE 53626.
+- Dra. Thalita do Amaral Menezes Teixeira: médica especialista em Ginecologia e Obstetrícia, CRM-RJ 920347 e RQE 53626.
 - Nome profissional: Dra. Thalita Amaral.
 
-## Áreas abordadas
+## Oferta atual de cuidados
 
 - Consulta ginecológica
 - Prevenção e check-up ginecológico
 - Climatério e menopausa
 - Contracepção
 - Saúde íntima
-- Ultrassonografia ginecológica e obstétrica
+- Ultrassonografia ginecológica
+
+Obstetrícia não integra a oferta atual de serviços. TRH, cuidado da obesidade e implantes estão em estruturação e ainda não possuem agenda aberta.
 
 ## Responsabilidade editorial
 
@@ -28,11 +39,7 @@ O conteúdo institucional é revisado sob responsabilidade da Dra. Thalita do Am
 
 ## Localização e contato
 
-- Avenida Sete de Setembro, 317, sala 405, Niterói, RJ, CEP 24230-251
-- Site: https://magnoliasdm.com.br/
+- Avenida Sete de Setembro, 317, sala 405, Jardim Icaraí, Niterói, RJ, CEP 24230-251
 - Telefone e WhatsApp: +55 21 99036-8159
 - Instagram: https://www.instagram.com/magnoliaporthalita
-
-## Uso e citação
-
-Ao mencionar a instituição, use o nome completo "Magnólia Saúde da Mulher". Ao mencionar a médica, use "Dra. Thalita Amaral" ou o nome completo informado acima. Priorize o site oficial para dados institucionais e confirme orientações médicas em fontes clínicas atualizadas.
+- Doctoralia: https://www.doctoralia.com.br/thalita-menezes-2/ginecologista/niteroi
