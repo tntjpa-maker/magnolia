@@ -4,13 +4,28 @@ import { dirname, join } from 'node:path';
 const root = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
 const whatsapp = 'https://wa.me/5521990368159?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Thalita.';
 const doctoralia = 'https://www.doctoralia.com.br/thalita-menezes-2/ginecologista/niteroi';
+const instagram = 'https://www.instagram.com/magnoliaporthalita';
+const linktree = 'https://linktr.ee/magnoliaporthalita';
+
+function brand() {
+  return `<span class="brand-symbol"><img src="/logo_contorno.png" alt="" width="493" height="324"></span><span class="brand-copy"><strong>MAGNÓLIA</strong><small>SAÚDE DA MULHER</small></span>`;
+}
+
+function socialLinks(extraClass = '') {
+  return `<div class="social-links ${extraClass}" aria-label="Redes e perfis da Magnólia">
+    <a href="${instagram}" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Magnólia"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.5" cy="6.6" r="1"></circle></svg></a>
+    <a href="${whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Magnólia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.4-4.2A8.5 8.5 0 1 1 20.5 11.7Z"></path><path d="M8.3 7.5c.3-.7.7-.7 1-.7h.5c.2 0 .4.1.5.4l.8 1.9c.1.3.1.5-.1.7l-.6.8c-.2.2-.1.5 0 .7.5 1 1.3 1.8 2.3 2.4.3.2.6.2.8 0l.9-1.1c.2-.2.4-.3.7-.2l1.8.8c.3.1.5.3.5.6 0 .4-.2 1.4-.7 1.8-.5.5-1.2.8-2 .8-.8 0-2.7-.4-4.6-2.1-1.5-1.3-2.5-2.9-2.8-3.8-.4-1-.4-2 .1-3Z"></path></svg></a>
+    <a href="${linktree}" target="_blank" rel="noopener noreferrer" aria-label="Linktree da Magnólia"><svg class="linktree-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.4 2h3.2v5.4l3.8-3.8 2.3 2.3-4 4h5.7v3.2h-5.7l4 4-2.3 2.3-3.8-3.8V22h-3.2v-6.4l-3.8 3.8-2.3-2.3 4-4H2.6V9.9h5.7l-4-4 2.3-2.3 3.8 3.8V2Z"></path></svg></a>
+    <a class="doctoralia-link" href="${doctoralia}" target="_blank" rel="noopener noreferrer" aria-label="Perfil da Dra. Thalita na Doctoralia"><img src="/doctoralia-symbol.svg" alt="" width="128" height="122"></a>
+  </div>`;
+}
 
 function header() {
   return `
   <header class="site-header">
     <div class="shell nav-bar">
       <a class="brand" href="/" aria-label="Magnólia — Saúde da Mulher, página inicial">
-        <img src="/log_marca_contorno.png" alt="Magnólia por Thalita Menezes" width="527" height="413">
+        ${brand()}
       </a>
       <nav class="desktop-nav" aria-label="Navegação principal">
         <details class="nav-dropdown">
@@ -21,7 +36,7 @@ function header() {
             <a href="/cuidados/climaterio-menopausa/">Climatério e menopausa</a>
             <a href="/cuidados/contracepcao/">Contracepção</a>
             <a href="/cuidados/saude-intima/">Saúde íntima</a>
-            <a href="/cuidados/ultrassonografia/">Ultrassonografia</a>
+            <a href="/cuidados/trh/">Terapia de reposição hormonal</a>
           </div>
         </details>
         <a href="/dra-thalita-amaral/">Dra. Thalita</a>
@@ -29,7 +44,8 @@ function header() {
         <a href="/conteudos/">Conteúdos</a>
         <a href="/duvidas/">Dúvidas</a>
       </nav>
-      <a class="button button--small" href="${whatsapp}" target="_blank" rel="noopener noreferrer">Agendar consulta <span aria-hidden="true">↗</span></a>
+      ${socialLinks('header-socials')}
+      <a class="button button--small header-cta" href="${whatsapp}" target="_blank" rel="noopener noreferrer">Agendar consulta <span aria-hidden="true">↗</span></a>
       <button class="mobile-toggle" type="button" data-menu-button aria-expanded="false" aria-controls="mobile-menu">Menu</button>
     </div>
     <nav class="mobile-panel" id="mobile-menu" data-mobile-panel aria-label="Navegação em dispositivos móveis">
@@ -40,6 +56,7 @@ function header() {
       <a href="/duvidas/">Dúvidas</a>
       <a href="/em-estruturacao/">Em estruturação</a>
       <a href="${whatsapp}" target="_blank" rel="noopener noreferrer">Agendar consulta</a>
+      ${socialLinks('mobile-socials')}
     </nav>
   </header>`;
 }
@@ -49,8 +66,9 @@ function footer() {
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div class="footer-brand">
-        <img src="/log_marca_contorno.png" alt="Magnólia por Thalita Menezes" width="527" height="413" loading="lazy">
+        <a class="brand brand--footer" href="/" aria-label="Magnólia — Saúde da Mulher, página inicial">${brand()}</a>
         <p>Cuidado ginecológico humano e individualizado em Niterói.</p>
+        ${socialLinks('footer-socials')}
       </div>
       <div>
         <strong>Cuidados</strong>
@@ -59,7 +77,7 @@ function footer() {
           <a href="/cuidados/climaterio-menopausa/">Climatério e menopausa</a>
           <a href="/cuidados/contracepcao/">Contracepção</a>
           <a href="/cuidados/saude-intima/">Saúde íntima</a>
-          <a href="/cuidados/ultrassonografia/">Ultrassonografia</a>
+          <a href="/cuidados/trh/">Terapia de reposição hormonal</a>
         </div>
       </div>
       <div>
@@ -77,12 +95,13 @@ function footer() {
         <p>Av. Sete de Setembro, 317, sala 405<br>Jardim Icaraí · Niterói/RJ</p>
         <div class="footer-links">
           <a href="${whatsapp}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <a href="https://www.instagram.com/magnoliaporthalita" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="${instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="${linktree}" target="_blank" rel="noopener noreferrer">Linktree</a>
           <a href="${doctoralia}" target="_blank" rel="noopener noreferrer">Doctoralia</a>
         </div>
       </div>
     </div>
-    <div class="shell footer-legal">© <span data-year>2026</span> Magnólia Saúde da Mulher. Conteúdo educativo; não substitui avaliação médica individual.</div>
+    <div class="shell footer-legal"><span>© <span data-year>2026</span> Magnólia Saúde da Mulher. Conteúdo educativo; não substitui avaliação médica individual.</span><span><a href="/politica-de-privacidade/">Política de Privacidade</a> · <a href="/termos-de-uso/">Termos de Uso</a></span></div>
   </footer>
   <a class="floating-whatsapp" href="${whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="Agendar consulta pelo WhatsApp"><span>✦</span> Agendar consulta</a>`;
 }
@@ -203,17 +222,17 @@ const services = [
     ]
   },
   {
-    slug: 'ultrassonografia',
-    title: 'Ultrassonografia ginecológica',
-    eyebrow: 'Imagem integrada ao cuidado',
-    description: 'Exame de imagem ginecológico realizado com indicação clínica e interpretado dentro do contexto da paciente.',
-    direct: 'A ultrassonografia ginecológica ajuda a avaliar útero, endométrio, ovários e estruturas pélvicas. O resultado ganha mais valor quando é correlacionado aos sintomas, ao ciclo e à história clínica.',
-    when: ['Investigação de dor pélvica', 'Sangramento uterino anormal', 'Avaliação de miomas, pólipos ou cistos', 'Controle de DIU', 'Acompanhamento de achados prévios', 'Investigação do ciclo menstrual'],
-    evaluated: ['indicação e pergunta clínica do exame', 'útero e endométrio', 'ovários e anexos', 'posição de dispositivo intrauterino, quando aplicável', 'correlação com sintomas e exames anteriores'],
+    slug: 'trh',
+    title: 'Terapia de reposição hormonal (TRH)',
+    eyebrow: 'Cuidado no climatério',
+    description: 'Avaliação individualizada dos sintomas e da segurança da terapia hormonal durante o climatério e a menopausa.',
+    direct: 'A terapia de reposição hormonal pode ser considerada para algumas mulheres com sintomas do climatério ou da menopausa. A decisão é individual: considera intensidade dos sintomas, idade, tempo desde a menopausa, histórico de saúde, contraindicações e preferências da paciente.',
+    when: ['Ondas de calor ou suor noturno', 'Sono prejudicado pelos sintomas', 'Ressecamento e desconforto vaginal', 'Sintomas com impacto na qualidade de vida', 'Dúvidas sobre benefícios e riscos da terapia hormonal', 'Necessidade de revisar um tratamento já iniciado'],
+    evaluated: ['sintomas e seu impacto na rotina', 'histórico ginecológico, cardiovascular e familiar', 'fatores de risco e contraindicações', 'saúde óssea e metabólica quando pertinente', 'via, dose, duração e acompanhamento adequados ao caso'],
     faq: [
-      ['Preciso de pedido médico?', 'A orientação depende do exame e do contexto. A equipe confirma os requisitos no momento do agendamento.'],
-      ['Há preparo para o exame?', 'O preparo varia conforme a via e a finalidade do exame. As instruções são informadas antes do atendimento.'],
-      ['O exame substitui a consulta?', 'Não. A ultrassonografia responde perguntas de imagem, mas a interpretação clínica considera sintomas, histórico e exame médico.']
+      ['Toda mulher na menopausa precisa de TRH?', 'Não. A indicação depende dos sintomas, do perfil de risco, das contraindicações e da preferência de cada paciente.'],
+      ['Existe apenas um tipo de terapia hormonal?', 'Não. Há diferentes hormônios, doses e vias de uso. A escolha precisa ser individualizada e acompanhada.'],
+      ['TRH é o mesmo que implante hormonal?', 'Não. Implantes são uma forma específica de administração e permanecem em estruturação na Magnólia. A consulta de TRH não implica indicação de implantes.']
     ]
   }
 ];
@@ -257,7 +276,7 @@ function servicePage(service) {
 
 const home = layout({
   title: 'Ginecologista em Niterói | Dra. Thalita Amaral | Magnólia',
-  description: 'Cuidado ginecológico humano e individualizado em Niterói com a Dra. Thalita Amaral. Prevenção, climatério, contracepção, saúde íntima e ultrassonografia.',
+  description: 'Cuidado ginecológico humano e individualizado em Niterói com a Dra. Thalita Amaral. Prevenção, climatério, contracepção, saúde íntima e TRH.',
   path: '/',
   schema: `<script type="application/ld+json">{"@context":"https://schema.org","@type":"MedicalClinic","name":"Magnólia Saúde da Mulher","url":"https://magnoliasdm.com.br/","medicalSpecialty":"Gynecologic","address":{"@type":"PostalAddress","streetAddress":"Avenida Sete de Setembro, 317, sala 405","addressLocality":"Niterói","addressRegion":"RJ","postalCode":"24230-251","addressCountry":"BR"}}</script>`,
   body: `
@@ -266,7 +285,7 @@ const home = layout({
         <div class="hero-copy" data-reveal>
           <div class="care-pill">✦ &nbsp; Ginecologia em Niterói</div>
           <h1>Cuidado ginecológico completo, humano e individualizado.</h1>
-          <p class="lead">Consulta presencial e online com a Dra. Thalita Amaral. Prevenção, climatério, contracepção, saúde íntima e ultrassonografia.</p>
+          <p class="lead">Consulta presencial e online com a Dra. Thalita Amaral. Prevenção, climatério, contracepção, saúde íntima e terapia de reposição hormonal.</p>
           <div class="actions">
             <a class="button" href="${whatsapp}" target="_blank" rel="noopener noreferrer">Agendar consulta <span aria-hidden="true">↗</span></a>
             <a class="button button--ghost" href="/dra-thalita-amaral/">Conheça a Dra. Thalita</a>
@@ -275,7 +294,6 @@ const home = layout({
         </div>
         <div class="hero-art" data-reveal>
           <div class="hero-image-frame"><img src="/hero-sensorial.webp" alt="Mulher em ambiente acolhedor com uma magnólia em primeiro plano" width="1600" height="900"></div>
-          <img class="botanical-line" src="/logo-magnolia.png" alt="" width="493" height="324">
         </div>
       </div>
     </section>
@@ -298,7 +316,7 @@ const home = layout({
           <a class="care-card" href="/cuidados/climaterio-menopausa/" data-reveal><span class="care-card__number">02</span><span class="care-card__arrow">↗</span><h3>Climatério e menopausa</h3><p>Sintomas, sexualidade, sono, ossos e decisões terapêuticas.</p></a>
           <a class="care-card" href="/cuidados/contracepcao/" data-reveal><span class="care-card__number">03</span><span class="care-card__arrow">↗</span><h3>Contracepção</h3><p>Escolha segura e informada do método contraceptivo.</p></a>
           <a class="care-card" href="/cuidados/saude-intima/" data-reveal><span class="care-card__number">04</span><span class="care-card__arrow">↗</span><h3>Saúde íntima</h3><p>Corrimentos, dor, ressecamento e desconfortos vulvovaginais.</p></a>
-          <a class="care-card" href="/cuidados/ultrassonografia/" data-reveal><span class="care-card__number">05</span><span class="care-card__arrow">↗</span><h3>Ultrassonografia</h3><p>Imagem ginecológica integrada à avaliação clínica.</p></a>
+          <a class="care-card" href="/cuidados/trh/" data-reveal><span class="care-card__number">05</span><span class="care-card__arrow">↗</span><h3>Terapia de reposição hormonal</h3><p>Avaliação individualizada de sintomas, benefícios e riscos.</p></a>
         </div>
         <div class="actions"><a class="text-link" href="/cuidados/">Ver todos os cuidados <span>→</span></a></div>
       </div>
@@ -316,7 +334,7 @@ const home = layout({
     </section>
     <section class="section">
       <div class="shell doctor-grid">
-        <div class="doctor-photo" data-reveal><img src="/dra-thalita.webp" alt="Dra. Thalita Amaral em seu consultório" width="999" height="1500" loading="lazy"><div class="doctor-note"><strong>Dra. Thalita Amaral</strong>Ginecologista · CRM-RJ 920347 · RQE 53626</div></div>
+        <div class="doctor-photo" data-reveal><img src="/dra-thalita-consultorio.jpg" alt="Dra. Thalita Amaral em seu consultório" width="1364" height="2048" loading="lazy"><div class="doctor-note"><strong>Dra. Thalita Amaral</strong>Ginecologista · CRM-RJ 920347 · RQE 53626</div></div>
         <div data-reveal><p class="eyebrow">Sua médica</p><h2>Experiência clínica com cuidado próximo.</h2><p class="lead">A Dra. Thalita do Amaral Menezes Teixeira é médica especialista em Ginecologia e Obstetrícia, com atuação voltada hoje ao cuidado ginecológico integral da mulher.</p><ul class="fact-list"><li>Residência médica no Hospital Naval Marcílio Dias.</li><li>Especialização em ultrassonografia ginecológica e mamografia.</li><li>Atendimento particular, presencial e online.</li><li>Conteúdo e condutas revisados sob responsabilidade médica.</li></ul><div class="actions"><a class="button" href="/dra-thalita-amaral/">Conheça a trajetória</a><a class="text-link" href="${doctoralia}" target="_blank" rel="noopener noreferrer">Ver Doctoralia ↗</a></div></div>
       </div>
     </section>
@@ -330,18 +348,18 @@ const home = layout({
         </div>
       </div>
     </section>
-    <section class="section"><div class="shell"><div class="soon-panel" data-reveal><p class="eyebrow eyebrow--light">Em estruturação</p><h2>Novas frentes de cuidado serão apresentadas quando estiverem prontas.</h2><p>TRH, cuidado da obesidade e implantes estão em desenvolvimento clínico e operacional. Ainda não são apresentados como serviços disponíveis.</p><div class="soon-tags"><span>TRH</span><span>Obesidade</span><span>Implantes</span></div><a class="button button--light" href="/em-estruturacao/">Entenda esta etapa</a></div></div></section>
+    <section class="section"><div class="shell"><div class="soon-panel" data-reveal><p class="eyebrow eyebrow--light">Em estruturação</p><h2>Novas frentes de cuidado serão apresentadas quando estiverem prontas.</h2><p>Ultrassonografia, cuidado da obesidade e implantes estão em desenvolvimento clínico e operacional. Ainda não são apresentados como serviços disponíveis.</p><div class="soon-tags"><span>Ultrassonografia</span><span>Obesidade</span><span>Implantes</span></div><a class="button button--light" href="/em-estruturacao/">Entenda esta etapa</a></div></div></section>
     <section class="section section--soft"><div class="shell faq-grid"><div class="faq-intro" data-reveal><p class="eyebrow">Dúvidas frequentes</p><h2>Antes de agendar.</h2><a class="text-link" href="/duvidas/">Ver todas as respostas →</a></div><div class="faq-list" data-reveal><details><summary>A consulta é particular?<span>+</span></summary><p>Sim. O atendimento é particular. A clínica pode emitir documentação para tentativa de reembolso, conforme as regras do plano da paciente.</p></details><details><summary>Posso fazer consulta online?<span>+</span></summary><p>Sim, para demandas compatíveis com teleatendimento. Quando houver necessidade de exame físico ou procedimento, será orientada consulta presencial.</p></details><details><summary>Como faço para agendar?<span>+</span></summary><p>O agendamento é realizado pelo WhatsApp. A equipe informa horários, valores e orientações.</p></details></div></div></section>
     ${contactSection()}`
 });
 
 const careHub = layout({
   title: 'Cuidados ginecológicos em Niterói | Magnólia',
-  description: 'Conheça os cuidados ginecológicos da Magnólia: consulta, climatério, menopausa, contracepção, saúde íntima e ultrassonografia.',
+  description: 'Conheça os cuidados ginecológicos da Magnólia: consulta, climatério, menopausa, contracepção, saúde íntima e terapia de reposição hormonal.',
   path: '/cuidados/',
   body: `${pageHero({ eyebrow: 'Cuidados', title: 'Encontre o cuidado que faz sentido para você.', lead: 'Organizamos os atendimentos por necessidades reais da mulher — prevenção, sintomas, fases de vida e decisões de saúde.', crumbs: '<a href="/">Início</a>' })}
     <section class="section"><div class="shell"><div class="heading-row"><div><p class="eyebrow">Atendimentos disponíveis</p><h2>Ginecologia com visão integral.</h2></div><p class="lead">Cada página explica quando procurar, o que é avaliado e como funciona o cuidado.</p></div><div class="service-index">${services.map((s, i) => `<a class="care-card ${i === 0 ? 'care-card--accent' : ''}" href="/cuidados/${s.slug}/" data-reveal><span class="care-card__number">0${i + 1}</span><span class="care-card__arrow">↗</span><h3>${s.title}</h3><p>${s.description}</p></a>`).join('')}</div></div></section>
-    <section class="section section--soft"><div class="shell"><p class="eyebrow">Você pode começar pelo sintoma</p><h2>O que está incomodando?</h2><div class="symptom-row"><a href="/cuidados/saude-intima/">Corrimento vaginal</a><a href="/cuidados/saude-intima/">Dor na relação</a><a href="/cuidados/climaterio-menopausa/">Ondas de calor</a><a href="/cuidados/consulta-ginecologica/">Sangramento irregular</a><a href="/cuidados/ultrassonografia/">Dor pélvica</a><a href="/cuidados/contracepcao/">Escolher contraceptivo</a><a href="/cuidados/consulta-ginecologica/">Check-up ginecológico</a></div></div></section>
+    <section class="section section--soft"><div class="shell"><p class="eyebrow">Você pode começar pelo sintoma</p><h2>O que está incomodando?</h2><div class="symptom-row"><a href="/cuidados/saude-intima/">Corrimento vaginal</a><a href="/cuidados/saude-intima/">Dor na relação</a><a href="/cuidados/climaterio-menopausa/">Ondas de calor</a><a href="/cuidados/consulta-ginecologica/">Sangramento irregular</a><a href="/cuidados/consulta-ginecologica/">Dor pélvica</a><a href="/cuidados/contracepcao/">Escolher contraceptivo</a><a href="/cuidados/trh/">Dúvidas sobre TRH</a><a href="/cuidados/consulta-ginecologica/">Check-up ginecológico</a></div></div></section>
     ${contactSection()}`
 });
 
@@ -349,8 +367,9 @@ const doctorPage = layout({
   title: 'Dra. Thalita Amaral | Ginecologista em Niterói',
   description: 'Conheça a formação, experiência e abordagem de cuidado da Dra. Thalita Amaral, ginecologista em Niterói.',
   path: '/dra-thalita-amaral/',
-  body: `${pageHero({ eyebrow: 'Dra. Thalita Amaral', title: 'Medicina com experiência, escuta e clareza.', lead: 'Ginecologista em Niterói, dedicada a um cuidado feminino individualizado, baseado em evidências e decisões compartilhadas.', crumbs: '<a href="/">Início</a>', image: '/dra-thalita.webp' })}
-    <section class="section"><div class="shell about-grid"><div data-reveal><p class="eyebrow">Trajetória</p><h2>Formação sólida para um cuidado próximo.</h2><p class="lead">Dra. Thalita do Amaral Menezes Teixeira é médica especialista em Ginecologia e Obstetrícia, com residência no Hospital Naval Marcílio Dias e experiência clínica dedicada à saúde da mulher.</p><p class="muted">Possui especialização em ultrassonografia ginecológica e mamografia. Sua atuação atual na Magnólia prioriza prevenção, climatério e menopausa, contracepção, saúde íntima e avaliação ginecológica integrada.</p><ul class="fact-list"><li>CRM-RJ 920347</li><li>RQE 53626</li><li>Atendimento particular em Niterói</li><li>Consulta presencial e online conforme indicação</li></ul><div class="actions"><a class="button" href="${doctoralia}" target="_blank" rel="noopener noreferrer">Perfil na Doctoralia ↗</a></div></div><div class="doctor-photo" data-reveal><img src="/tha1.jpg" alt="Dra. Thalita Amaral no consultório" width="1279" height="1920" loading="lazy"></div></div></section>
+  body: `${pageHero({ eyebrow: 'Dra. Thalita Amaral', title: 'Medicina com experiência, escuta e clareza.', lead: 'Ginecologista em Niterói, dedicada a um cuidado feminino individualizado, baseado em evidências e decisões compartilhadas.', crumbs: '<a href="/">Início</a>', image: '/dra-thalita-consultorio.jpg' })}
+    <section class="section"><div class="shell about-grid"><div data-reveal><p class="eyebrow">Trajetória</p><h2>Formação sólida para um cuidado próximo.</h2><p class="lead">Dra. Thalita do Amaral Menezes Teixeira é médica especialista em Ginecologia e Obstetrícia, com residência no Hospital Naval Marcílio Dias e experiência clínica dedicada à saúde da mulher.</p><p class="muted">Possui especialização em ultrassonografia ginecológica e mamografia. Sua atuação atual na Magnólia prioriza prevenção, climatério e menopausa, contracepção, saúde íntima e avaliação individualizada de terapia hormonal.</p><ul class="fact-list"><li>CRM-RJ 920347</li><li>RQE 53626</li><li>Atendimento particular em Niterói</li><li>Consulta presencial e online conforme indicação</li></ul><div class="actions"><a class="button" href="${doctoralia}" target="_blank" rel="noopener noreferrer">Perfil na Doctoralia ↗</a></div></div><div class="doctor-photo" data-reveal><img src="/dra-thalita-congresso.jpeg" alt="Dra. Thalita Amaral em atualização científica" width="1600" height="1066" loading="lazy"></div></div></section>
+    <section class="section section--soft"><div class="shell doctor-gallery"><figure data-reveal><img src="/dra-thalita-rhia.jpeg" alt="Dra. Thalita Amaral no congresso de reposição hormonal e implantes" width="1200" height="1600" loading="lazy"><figcaption>Atualização científica contínua em saúde da mulher.</figcaption></figure><div data-reveal><p class="eyebrow">Atualização profissional</p><h2>Ciência aplicada com responsabilidade.</h2><p class="lead">A participação em congressos e atividades de educação médica continuada sustenta uma prática que revê evidências, limites e critérios de segurança antes de cada decisão clínica.</p><p class="muted">Formação e participação em eventos não significam indicação automática de procedimentos. Cada opção é discutida conforme o quadro e as preferências da paciente.</p></div></div></section>
     <section class="section section--forest"><div class="shell journey-grid"><div><p class="eyebrow eyebrow--light">Princípios de atendimento</p><h2>Informação também é cuidado.</h2></div><div class="journey-list"><div class="journey-step"><div><h3>Escuta sem julgamento</h3><p>O contexto e as preferências da paciente fazem parte da decisão clínica.</p></div></div><div class="journey-step"><div><h3>Condutas explicadas</h3><p>Benefícios, riscos, alternativas e limites são apresentados com clareza.</p></div></div><div class="journey-step"><div><h3>Continuidade</h3><p>O plano é revisto conforme sintomas, exames e fase de vida.</p></div></div></div></div></section>
     ${contactSection()}`
 });
@@ -361,13 +380,13 @@ const aboutPage = layout({
   path: '/a-magnolia/',
   body: `${pageHero({ eyebrow: 'A Magnólia', title: 'Um espaço pensado para a mulher ser ouvida.', lead: 'A Magnólia nasceu para unir competência clínica, acolhimento e uma experiência de cuidado organizada em torno da paciente.', crumbs: '<a href="/">Início</a>', image: '/hero-sensorial.webp' })}
     <section class="section"><div class="shell heading-row"><div><p class="eyebrow">Nosso propósito</p><h2>Cuidar com tempo, contexto e individualidade.</h2></div><p class="lead">A proposta não é criar uma consulta padronizada, mas uma jornada em que a paciente compreende o próprio quadro e participa das decisões.</p></div><div class="shell values-grid"><div class="value-card" data-reveal><span>01</span><h3>Escuta</h3><p class="muted">A queixa é recebida dentro da história, da rotina e da fase de vida.</p></div><div class="value-card" data-reveal><span>02</span><h3>Clareza</h3><p class="muted">Explicações objetivas para que decisões médicas façam sentido.</p></div><div class="value-card" data-reveal><span>03</span><h3>Continuidade</h3><p class="muted">Acompanhamento proporcional à necessidade, sem excesso de intervenções.</p></div></div></section>
-    <section class="section section--soft"><div class="shell about-grid"><div class="about-photo" data-reveal><img src="/dra-thalita.webp" alt="Dra. Thalita Amaral no espaço da Magnólia" width="999" height="1500" loading="lazy"></div><div data-reveal><p class="eyebrow">Experiência Magnólia</p><h2>Ginecologia com identidade própria.</h2><p class="lead">Ambiente reservado, atendimento particular e comunicação direta com a equipe.</p><ul class="fact-list"><li>Localização no Jardim Icaraí, em Niterói.</li><li>Atendimento presencial e online conforme a demanda.</li><li>Integração entre avaliação clínica e ultrassonografia ginecológica.</li><li>Conteúdo médico revisado e responsável.</li></ul></div></div></section>
+    <section class="section section--soft"><div class="shell about-grid"><div class="about-photo" data-reveal><img src="/dra-thalita-consultorio.jpg" alt="Dra. Thalita Amaral no espaço da Magnólia" width="1364" height="2048" loading="lazy"></div><div data-reveal><p class="eyebrow">Experiência Magnólia</p><h2>Ginecologia com identidade própria.</h2><p class="lead">Ambiente reservado, atendimento particular e comunicação direta com a equipe.</p><ul class="fact-list"><li>Localização no Jardim Icaraí, em Niterói.</li><li>Atendimento presencial e online conforme a demanda.</li><li>Avaliação clínica individualizada e decisões compartilhadas.</li><li>Conteúdo médico revisado e responsável.</li></ul></div></div></section>
     ${contactSection()}`
 });
 
 const contentPage = layout({
   title: 'Conteúdos sobre saúde da mulher | Magnólia',
-  description: 'Conteúdos claros sobre ginecologia, climatério, menopausa, contracepção, saúde íntima e ultrassonografia.',
+  description: 'Conteúdos claros sobre ginecologia, climatério, menopausa, contracepção, saúde íntima e terapia de reposição hormonal.',
   path: '/conteudos/',
   body: `${pageHero({ eyebrow: 'Conteúdos', title: 'Respostas confiáveis para dúvidas reais.', lead: 'Uma biblioteca editorial organizada pelas perguntas que as mulheres fazem no consultório e nos mecanismos de busca.', crumbs: '<a href="/">Início</a>' })}
     <section class="section"><div class="shell article-list">
@@ -375,7 +394,7 @@ const contentPage = layout({
       <article class="article-card" id="contracepcao" data-reveal><small>Contracepção</small><h2>Como escolher o melhor método para mim?</h2><p class="muted">Segurança, eficácia, rotina, efeitos desejados e preferências precisam ser considerados juntos.</p><a class="text-link" href="/cuidados/contracepcao/">Ver guia clínico →</a></article>
       <article class="article-card" id="saude-intima" data-reveal><small>Saúde íntima</small><h2>Corrimento vaginal: quando é necessário investigar?</h2><p class="muted">Nem toda secreção é doença. Sintomas associados e exame direcionam a conduta correta.</p><a class="text-link" href="/cuidados/saude-intima/">Ver guia clínico →</a></article>
       <article class="article-card" data-reveal><small>Prevenção</small><h2>O que faz parte de um check-up ginecológico?</h2><p class="muted">A prevenção depende da idade, do histórico, dos sintomas e dos exames já realizados.</p><a class="text-link" href="/cuidados/consulta-ginecologica/">Ver guia clínico →</a></article>
-      <article class="article-card" data-reveal><small>Ultrassonografia</small><h2>Quando a ultrassonografia transvaginal é indicada?</h2><p class="muted">Dor pélvica, sangramento anormal e acompanhamento de alterações estão entre as indicações possíveis.</p><a class="text-link" href="/cuidados/ultrassonografia/">Ver guia clínico →</a></article>
+      <article class="article-card" data-reveal><small>Terapia hormonal</small><h2>TRH: para quem a avaliação pode fazer sentido?</h2><p class="muted">Sintomas, perfil de risco, contraindicações e preferências precisam ser considerados antes de qualquer indicação.</p><a class="text-link" href="/cuidados/trh/">Ver guia clínico →</a></article>
       <article class="article-card" data-reveal><small>Saúde íntima</small><h2>Dor durante a relação sexual não deve ser normalizada.</h2><p class="muted">Causas hormonais, musculares, inflamatórias e ginecológicas podem estar envolvidas.</p><a class="text-link" href="/cuidados/saude-intima/">Ver guia clínico →</a></article>
     </div></section>${contactSection()}`
 });
@@ -390,19 +409,65 @@ const faqPage = layout({
       <details><summary>Como funciona o agendamento?<span>+</span></summary><p>A equipe informa horários, modalidade, valor e orientações pelo WhatsApp. A confirmação segue as regras apresentadas no momento da reserva.</p></details>
       <details><summary>Há consulta online?<span>+</span></summary><p>Sim, quando a demanda é adequada ao teleatendimento. Se houver necessidade de exame físico ou procedimento, será orientado atendimento presencial.</p></details>
       <details><summary>O que levar à consulta?<span>+</span></summary><p>Leve exames recentes, receitas, lista de medicamentos e informações sobre tratamentos e cirurgias anteriores.</p></details>
-      <details><summary>Posso agendar somente uma ultrassonografia?<span>+</span></summary><p>A equipe confirma disponibilidade, indicação, pedido e preparo conforme o tipo de exame.</p></details>
+      <details><summary>A ultrassonografia já está disponível na Magnólia?<span>+</span></summary><p>A ultrassonografia está em estruturação e ainda não possui agenda aberta. A consulta ginecológica segue disponível normalmente.</p></details>
       <details><summary>A Magnólia atende climatério e menopausa?<span>+</span></summary><p>Sim. A avaliação aborda sintomas, qualidade de vida, sexualidade, saúde óssea e cardiovascular, além das possibilidades terapêuticas.</p></details>
-      <details><summary>TRH, obesidade e implantes já estão disponíveis?<span>+</span></summary><p>Ainda não. Essas frentes estão em estruturação e serão divulgadas somente após definição completa dos protocolos e da operação.</p></details>
+      <details><summary>TRH, obesidade e implantes já estão disponíveis?<span>+</span></summary><p>A avaliação clínica para TRH está disponível. Obesidade e implantes permanecem em estruturação e serão divulgados somente após definição completa dos protocolos e da operação.</p></details>
       <details><summary>A Magnólia oferece acompanhamento obstétrico?<span>+</span></summary><p>Não. O portfólio atual é direcionado ao cuidado ginecológico e não inclui serviços de Obstetrícia.</p></details>
     </div></div></section>${contactSection()}`
 });
 
 const soonPage = layout({
   title: 'Serviços em estruturação | Magnólia',
-  description: 'Conheça as frentes de TRH, obesidade e implantes que estão em estruturação na Magnólia e ainda não possuem agenda aberta.',
+  description: 'Conheça as frentes de ultrassonografia, obesidade e implantes que estão em estruturação na Magnólia e ainda não possuem agenda aberta.',
   path: '/em-estruturacao/',
-  body: `${pageHero({ eyebrow: 'Em estruturação', title: 'Novas frentes, apresentadas somente quando estiverem prontas.', lead: 'TRH, cuidado da obesidade e implantes estão em desenvolvimento clínico, operacional e regulatório. Ainda não há agenda aberta.', crumbs: '<a href="/">Início</a>' })}
-    <section class="section"><div class="shell"><div class="values-grid"><div class="value-card" data-reveal><span>01</span><h3>TRH</h3><p class="muted">Definição de critérios clínicos, jornada, acompanhamento e materiais educativos.</p></div><div class="value-card" data-reveal><span>02</span><h3>Obesidade</h3><p class="muted">Estruturação do cuidado longitudinal, equipe, protocolos e integração de dados.</p></div><div class="value-card" data-reveal><span>03</span><h3>Implantes</h3><p class="muted">Análise de indicações, segurança, consentimentos, operação e acompanhamento.</p></div></div><div class="answer-box narrow" style="margin-top:60px"><strong>Transparência</strong>Esta página não representa oferta ou indicação desses tratamentos. A comunicação definitiva será publicada quando o serviço estiver formalmente disponível.</div></div></section>${contactSection()}`
+  body: `${pageHero({ eyebrow: 'Em estruturação', title: 'Novas frentes, apresentadas somente quando estiverem prontas.', lead: 'Ultrassonografia, cuidado da obesidade e implantes estão em desenvolvimento clínico, operacional e regulatório. Ainda não há agenda aberta.', crumbs: '<a href="/">Início</a>' })}
+    <section class="section"><div class="shell"><div class="values-grid"><div class="value-card" data-reveal><span>01</span><h3>Ultrassonografia</h3><p class="muted">Estruturação de agenda, fluxo de atendimento, preparo e integração dos laudos ao cuidado clínico.</p></div><div class="value-card" data-reveal><span>02</span><h3>Obesidade</h3><p class="muted">Estruturação do cuidado longitudinal, equipe, protocolos e integração de dados.</p></div><div class="value-card" data-reveal><span>03</span><h3>Implantes</h3><p class="muted">Análise de indicações, segurança, consentimentos, operação e acompanhamento.</p></div></div><div class="answer-box narrow" style="margin-top:60px"><strong>Transparência</strong>Esta página não representa oferta ou indicação desses tratamentos. A comunicação definitiva será publicada quando o serviço estiver formalmente disponível.</div></div></section>${contactSection()}`
+});
+
+const ultrasoundStatusPage = layout({
+  title: 'Ultrassonografia em estruturação | Magnólia',
+  description: 'O serviço de ultrassonografia da Magnólia está em estruturação e ainda não possui agenda aberta.',
+  path: '/cuidados/ultrassonografia/',
+  body: `${pageHero({ eyebrow: 'Em estruturação', title: 'Ultrassonografia ainda não está disponível.', lead: 'A operação do serviço está sendo organizada. Quando houver agenda, preparo e fluxo definidos, as informações serão publicadas nesta página.', crumbs: '<a href="/">Início</a> · <a href="/em-estruturacao/">Em estruturação</a>' })}
+    <section class="section"><div class="shell narrow"><div class="answer-box"><strong>O que permanece disponível</strong>A consulta ginecológica continua atendendo prevenção, sintomas e investigação clínica. Quando necessário, a médica poderá orientar a realização de exames de imagem em serviço externo.</div><div class="actions"><a class="button" href="/cuidados/consulta-ginecologica/">Conhecer a consulta ginecológica</a></div></div></section>${contactSection()}`
+});
+
+const privacyPage = layout({
+  title: 'Política de Privacidade | Magnólia Saúde da Mulher',
+  description: 'Saiba como a Magnólia Saúde da Mulher trata dados pessoais no site e nos canais de contato.',
+  path: '/politica-de-privacidade/',
+  body: `${pageHero({ eyebrow: 'Documento legal', title: 'Política de Privacidade', lead: 'Esta política explica como os dados pessoais podem ser coletados e tratados nos canais digitais da Magnólia Saúde da Mulher.', crumbs: '<a href="/">Início</a>', image: '' })}
+    <section class="section"><article class="shell legal-copy">
+      <p class="legal-updated">Última atualização: 3 de agosto de 2026.</p>
+      <h2>1. Quem é responsável pelo tratamento</h2><p>A Magnólia Saúde da Mulher é responsável pelos dados tratados por meio do site <a href="https://magnoliasdm.com.br/">magnoliasdm.com.br</a> e de seus canais oficiais. Dúvidas e solicitações podem ser enviadas para <a href="mailto:magnoliasdm@gmail.com">magnoliasdm@gmail.com</a>.</p>
+      <h2>2. Quais dados podem ser coletados</h2><p>Podemos receber dados de contato, como nome, telefone e e-mail, além das informações que você decide enviar por formulários, WhatsApp ou outros canais. Durante a navegação, registros técnicos como endereço IP, tipo de navegador, dispositivo, páginas visitadas e cookies podem ser processados para segurança e funcionamento do site.</p>
+      <div class="legal-alert"><strong>Dados de saúde</strong><p>Evite enviar informações médicas sensíveis por formulários públicos. Informações clínicas devem ser compartilhadas somente pelos canais orientados pela equipe e quando necessárias ao atendimento.</p></div>
+      <h2>3. Para quais finalidades</h2><ul><li>responder solicitações e viabilizar o contato com a equipe;</li><li>organizar informações sobre agendamento e atendimento;</li><li>manter a segurança, a disponibilidade e o funcionamento do site;</li><li>cumprir obrigações legais e regulatórias;</li><li>produzir estatísticas agregadas para melhoria da experiência.</li></ul>
+      <h2>4. Bases legais e compartilhamento</h2><p>O tratamento poderá ocorrer, conforme o caso, para execução de procedimentos solicitados pela titular, cumprimento de obrigação legal ou regulatória, exercício regular de direitos, legítimo interesse ou consentimento. Dados podem ser compartilhados com fornecedores essenciais de hospedagem, comunicação, segurança e tecnologia, limitados ao necessário para a prestação do serviço.</p>
+      <h2>5. Cookies e serviços de terceiros</h2><p>Cookies estritamente necessários podem ser usados para o funcionamento do site. Links para WhatsApp, Instagram, Linktree, Doctoralia, mapas e outros serviços levam a ambientes de terceiros, sujeitos às políticas próprias dessas plataformas.</p>
+      <h2>6. Armazenamento e segurança</h2><p>Adotamos medidas técnicas e organizacionais razoáveis para reduzir riscos de acesso indevido, alteração, perda ou divulgação. Nenhuma transmissão ou armazenamento digital é absolutamente infalível; por isso, mantemos práticas de prevenção e resposta compatíveis com a operação.</p>
+      <h2>7. Seus direitos</h2><p>Nos termos da Lei Geral de Proteção de Dados, você pode solicitar confirmação do tratamento, acesso, correção, anonimização, bloqueio ou eliminação quando aplicável, informação sobre compartilhamento, portabilidade nos limites legais e revogação do consentimento. Poderemos solicitar comprovação de identidade para proteger a titular dos dados.</p>
+      <h2>8. Atualizações e contato</h2><p>Esta política poderá ser atualizada para refletir mudanças legais, técnicas ou operacionais. A versão vigente e sua data de atualização permanecerão publicadas nesta página. Para exercer direitos ou esclarecer dúvidas, escreva para <a href="mailto:magnoliasdm@gmail.com">magnoliasdm@gmail.com</a>.</p>
+    </article></section>`
+});
+
+const termsPage = layout({
+  title: 'Termos de Uso | Magnólia Saúde da Mulher',
+  description: 'Conheça as regras de utilização do site da Magnólia Saúde da Mulher.',
+  path: '/termos-de-uso/',
+  body: `${pageHero({ eyebrow: 'Documento legal', title: 'Termos de Uso', lead: 'Ao acessar este site, você concorda com as condições abaixo. Leia o documento antes de continuar a navegação.', crumbs: '<a href="/">Início</a>', image: '' })}
+    <section class="section"><article class="shell legal-copy">
+      <p class="legal-updated">Vigente desde junho de 2024. Revisado em 3 de agosto de 2026.</p>
+      <h2>1. Uso do site</h2><p>O acesso ao site da Magnólia Saúde da Mulher é gratuito e atribui à pessoa visitante a condição de usuária destes Termos. O conteúdo deve ser utilizado de forma lícita, ética e compatível com sua finalidade informativa.</p>
+      <h2>2. Informação médica e atendimento</h2><div class="legal-alert"><strong>Conteúdo educativo</strong><p>As informações publicadas não substituem consulta, diagnóstico, prescrição ou atendimento de urgência. Em caso de sintomas importantes ou emergência, procure um serviço de saúde adequado.</p></div>
+      <h2>3. Dados pessoais</h2><p>O tratamento de dados pessoais relacionado ao uso do site segue a versão vigente da nossa <a href="/politica-de-privacidade/">Política de Privacidade</a>.</p>
+      <h2>4. Propriedade intelectual</h2><p>Textos, identidade visual, fotografias, ilustrações, marcas e demais elementos do site pertencem à Magnólia Saúde da Mulher ou são utilizados mediante autorização. Nenhum direito de reprodução, adaptação ou exploração comercial é concedido sem autorização expressa.</p>
+      <h2>5. Links externos</h2><p>O site pode conter links para plataformas de terceiros, como WhatsApp, Instagram, Linktree e Doctoralia. Cada serviço possui regras e práticas próprias. A Magnólia não controla a disponibilidade, o conteúdo ou o tratamento de dados realizado nesses ambientes externos.</p>
+      <h2>6. Disponibilidade e alterações</h2><p>O site poderá ser atualizado, suspenso ou interrompido, no todo ou em parte, por razões técnicas, operacionais ou legais. Os serviços apresentados também podem mudar conforme disponibilidade e organização clínica. Informações de agenda devem ser confirmadas diretamente com a equipe.</p>
+      <h2>7. Conduta da pessoa usuária</h2><p>Não é permitido tentar comprometer a segurança do site, acessar áreas não autorizadas, inserir código malicioso, usar o conteúdo de maneira ilícita ou violar direitos de terceiros.</p>
+      <h2>8. Atualização dos termos</h2><p>Estes Termos podem ser modificados. A versão atualizada passa a valer a partir de sua publicação nesta página. A continuidade do uso após a alteração representa ciência das novas condições.</p>
+      <h2>9. Contato</h2><p>Dúvidas sobre estes Termos podem ser encaminhadas para <a href="mailto:magnoliasdm@gmail.com">magnoliasdm@gmail.com</a>.</p>
+    </article></section>`
 });
 
 const outputs = new Map([
@@ -412,7 +477,10 @@ const outputs = new Map([
   ['a-magnolia/index.html', aboutPage],
   ['conteudos/index.html', contentPage],
   ['duvidas/index.html', faqPage],
-  ['em-estruturacao/index.html', soonPage]
+  ['em-estruturacao/index.html', soonPage],
+  ['cuidados/ultrassonografia/index.html', ultrasoundStatusPage],
+  ['politica-de-privacidade/index.html', privacyPage],
+  ['termos-de-uso/index.html', termsPage]
 ]);
 
 for (const service of services) outputs.set(`cuidados/${service.slug}/index.html`, servicePage(service));

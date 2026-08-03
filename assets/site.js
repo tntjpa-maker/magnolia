@@ -18,7 +18,12 @@ if (menuButton && mobilePanel) {
 }
 
 document.querySelectorAll('.nav-dropdown').forEach((dropdown) => {
+  dropdown.addEventListener('mouseenter', () => dropdown.setAttribute('open', ''));
   dropdown.addEventListener('mouseleave', () => dropdown.removeAttribute('open'));
+  dropdown.addEventListener('focusin', () => dropdown.setAttribute('open', ''));
+  dropdown.addEventListener('focusout', (event) => {
+    if (!dropdown.contains(event.relatedTarget)) dropdown.removeAttribute('open');
+  });
 });
 
 const revealItems = document.querySelectorAll('[data-reveal]');
