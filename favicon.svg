@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Magnólia Saúde da Mulher">
+  <rect width="64" height="64" rx="16" fill="#4d3542"/>
+  <g transform="translate(32 31)">
+    <ellipse rx="8" ry="18" transform="rotate(0) translate(0 -8)" fill="#fffdf9"/>
+    <ellipse rx="8" ry="18" transform="rotate(72) translate(0 -8)" fill="#eee8dd"/>
+    <ellipse rx="8" ry="18" transform="rotate(144) translate(0 -8)" fill="#e9ddca"/>
+    <ellipse rx="8" ry="18" transform="rotate(216) translate(0 -8)" fill="#fffdf9"/>
+    <ellipse rx="8" ry="18" transform="rotate(288) translate(0 -8)" fill="#eee8dd"/>
+    <circle r="6" fill="#c3b695"/>
+    <circle r="2.4" fill="#565636"/>
+  </g>
+</svg>
