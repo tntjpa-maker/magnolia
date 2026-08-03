@@ -2,7 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 const root = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
-const assetVersion = '20260803-3';
+const assetVersion = '20260803-4';
 const whatsapp = 'https://wa.me/5521990368159?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Thalita.';
 const doctoralia = 'https://www.doctoralia.com.br/thalita-menezes-2/ginecologista/niteroi';
 const instagram = 'https://www.instagram.com/magnoliaporthalita';
@@ -102,7 +102,7 @@ function footer() {
         </div>
       </div>
     </div>
-    <div class="shell footer-legal"><span>© <span data-year>2026</span> Magnólia Saúde da Mulher. Conteúdo educativo; não substitui avaliação médica individual.</span><span><a href="/politica-de-privacidade/">Política de Privacidade</a> · <a href="/termos-de-uso/">Termos de Uso</a></span></div>
+    <div class="shell footer-legal"><span>© <span data-year>2026</span> Magnólia Saúde da Mulher. Conteúdo educativo; não substitui avaliação médica individual.</span><span class="footer-legal-links"><a href="/politica-de-privacidade/">Política de Privacidade</a><span aria-hidden="true">·</span><a href="/termos-de-uso/">Termos de Uso</a></span></div>
   </footer>
   <a class="floating-whatsapp" href="${whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="Agendar consulta pelo WhatsApp"><span>✦</span> Agendar consulta</a>`;
 }

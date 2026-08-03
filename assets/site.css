@@ -289,7 +289,8 @@ h3 { font-size: 1.65rem; line-height: 1.15; }
 .footer-grid p, .footer-grid a { color: var(--muted); font-size: .86rem; }
 .footer-links { display: grid; gap: 8px; margin-top: 12px; }
 .footer-socials { margin-top: 18px; }
-.footer-legal { margin-top: 44px; padding-top: 24px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; border-top: 1px solid var(--line); color: var(--muted); font-size: .76rem; }
+.footer-legal { margin-top: 44px; padding-top: 24px; display: grid; justify-items: start; gap: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: .76rem; }
+.footer-legal-links { display: flex; align-items: center; gap: 8px; }
 .footer-legal a { border-bottom: 1px solid currentColor; }
 .legal-copy { width: min(880px, calc(100% - 64px)); }
 .legal-copy h2 { margin: 58px 0 18px; font-size: clamp(2rem, 3.2vw, 3rem); }
@@ -360,6 +361,7 @@ h3 { font-size: 1.65rem; line-height: 1.15; }
   .doctor-photo img { height: 500px; }
   .doctor-note { max-width: 270px; }
   .footer-grid { grid-template-columns: 1fr; }
+  .footer-legal { padding-bottom: 76px; }
   .floating-whatsapp { right: 14px; bottom: 14px; }
 }
 
