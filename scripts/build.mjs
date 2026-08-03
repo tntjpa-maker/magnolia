@@ -2,7 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 const root = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
-const assetVersion = '20260803-2';
+const assetVersion = '20260803-3';
 const whatsapp = 'https://wa.me/5521990368159?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Thalita.';
 const doctoralia = 'https://www.doctoralia.com.br/thalita-menezes-2/ginecologista/niteroi';
 const instagram = 'https://www.instagram.com/magnoliaporthalita';
@@ -142,7 +142,7 @@ function pageHero({ eyebrow, title, lead, crumbs = '', image = '' }) {
         <p class="lead">${lead}</p>
         <div class="actions"><a class="button" href="${whatsapp}" target="_blank" rel="noopener noreferrer">Agendar consulta <span aria-hidden="true">↗</span></a></div>
       </div>
-      <div class="page-hero-visual" data-reveal>${image ? `<img src="${image}" alt="" width="900" height="900">` : ''}</div>
+      <div class="page-hero-visual ${image ? 'page-hero-visual--photo' : 'page-hero-visual--brand'}" data-reveal>${image ? `<img src="${image}" alt="" width="900" height="900">` : '<img class="page-hero-logo" src="/log_marca_contorno.png" alt="Magnólia por Thalita Menezes" width="527" height="413">'}</div>
     </div>
   </section>`;
 }
